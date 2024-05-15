@@ -8,39 +8,34 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 @endsection
 
-@section('judulh1','Admin - Users')
-@section('judulh3','Users')
+@section('judulh1','Admin - Pelanggan')
+@section('judulh3','Pelanggans')
 @section('konten')
 
 <div class="col-md-4">
 
     <div class="card card-success">
         <div class="card-header">
-            <h3 class="card-title">Input User</h3>
+            <h3 class="card-title">Input Pelanggan</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ route('pengguna.store') }}" method="POST">
+        <form action="{{ route('pelanggan.store') }}" method="POST">
             @csrf
+
             <div class=" card-body">
                 <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder=" Nama Lengkap" required value="{{ old('name') }}">
+                    <label for="nama">Nama Pelanggan</label>
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="">
+                </div>                
+                <div class="form-group">
+                    <label for="hp">No HP</label>
+                    <input type="text" class="form-control" id="hp" name="hp">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="JohnDoe@example.com" required value="{{ old('email') }}">
-                    @error('email')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
+                    <label for="alamat">Alamat</label>
+                    <input type="text" class="form-control" id="alamat" name="alamat">
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-               
             </div>
             <!-- /.card-body -->
 
@@ -50,13 +45,12 @@
         </form>
     </div>
 
-
 </div>
 
 <div class="col-md-8">
     <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Data User</h3>
+            <h3 class="card-title">Data Pelanggan</h3>
         </div>
         <!-- /.card-header -->
 
@@ -65,8 +59,10 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama </th>
-                        <th>Email</th>                        
+                        <th>Nama</th>
+                        <th>No HP</th>
+                        <th>Alamat</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -75,7 +71,19 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $dt->nama }}</td>
-                        <td>{{ $dt->email }}</td>
+                        <td>{{ $dt->hp }}</td>
+                        <td>{{ $dt->alamat }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-warning" href="{{ route('pelanggan.edit',$dt->id) }}">
+                                    <i class=" fas fa-edit"></i>
+                                </a>
+                                <a type="button" class="btn btn-success" href="{{ route('pelanggan.show',$dt->id) }}">
+                                    <i class=" fas fa-eye"></i>
+                                </a>
+                            </div>
+
+                        </td>
                     </tr>
 
                     @endforeach
@@ -83,7 +91,6 @@
             </table>
 
         </div>
-
 
     </div>
 </div>
@@ -126,3 +133,5 @@ toastr.warning("{{ $message}}");
 @endif
 </script>
 @endsection
+
+

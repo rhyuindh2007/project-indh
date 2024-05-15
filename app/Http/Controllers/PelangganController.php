@@ -13,13 +13,13 @@ class PelangganController extends Controller
 
     public function index()
     {
-        return view('pelanggan.tabel',["title"=>"Pelanggan","data"=>Pelanggan::all()
+        return view('pelanggan.index',["title"=>"Pelanggan","data"=>Pelanggan::all()
     ]);
     }
 
     public function create():View
     {
-        return view('pelanggan.tambah')->with(["title"=>"Tambah Data Pelanggan"]);
+        return view('pelanggan.index')->with(["title"=>"Tambah Data Pelanggan"]);
     }
 
     public function store(Request $request):RedirectResponse
