@@ -1,6 +1,4 @@
-<div>
-    {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
-</div>
+
 <div class="row">
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -27,7 +25,7 @@
                         <tr>
                             <th>Pelanggan</th>
                             <th>:</th>
-                            <td>{{ $data->pelanggan->name}}</td>
+                            <td>{{ $data->pelanggans->nama}}</td>
                         </tr>
                         <tr>
                             <th>Tanggal</th>
@@ -47,7 +45,7 @@
 
         <div class="col-lg-6 ps-3">
             <div class="card">
-                <div class="card-header">Layanan </div>
+                <div class="card-header">Barang </div>
                 <div class="card-body">
                     <form wire:submit.prevent="store" method="POST">
 
@@ -56,10 +54,10 @@
                             <input type="hidden" name="transaksi_id" wire:model="transaksi_id" value="{{ $data->id }}">
 
                             <div class="form-group">
-                                <label for="layanan_id">Layanan</label>
-                                <select class="form-control" wire:model="layanan_id" name="layanan_id">
-                                    <option hidden>--Pilih Layanan--</option>
-                                    @foreach($dataLayanan as $dt )
+                                <label for="barang_id">Barang</label>
+                                <select class="form-control" wire:model="barang_id" name="barang_id">
+                                    <option hidden>--Pilih Barang--</option>
+                                    @foreach($dataBarang as $dt )
                                     <option value="{{ $dt->id }}">{{ $dt->name }}</option>
                                     @endforeach
                                 </select>
@@ -95,7 +93,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Layanan</th>
+                                <th>Nama Barang</th>
                                 <th>Harga</th>
                                 <th>Jumlah</th>
                                 <th>Sub Total</th>
@@ -107,7 +105,7 @@
                             @foreach($dataTransaksiDetail as $dt)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $dt->layanan->name }}</td>
+                                <td>{{ $dt->barang->name }}</td>
                                 <td>@money($dt->price)</td>
                                 <td>{{ $dt->qty}}</td>
                                 <td>@money($dt->price * $dt->qty)</td>

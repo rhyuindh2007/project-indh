@@ -30,3 +30,18 @@ Route::get('login',[LoginController::class,'loginView'])->name('login');
 Route::post('login',[LoginController::class,'authenticate']);
 
 Route::post('/logout',[LoginController::class,'logout'])->name('auth.logout');
+
+Route::get('penjualan',function(){
+    return view('penjualan.index',[
+        "title"=>"Penjualan"
+    ]);
+})->name('penjualan');
+
+Route::get('transaksi',function(){
+    return view('penjualan.transaksis',[
+        "title"=>"Transaksi"
+    ]);
+    });
+
+    Route::get('cetakReceipt',[CetakController::class,'receipt'])->name('cetakReceipt')->middleware('auth');
+    
