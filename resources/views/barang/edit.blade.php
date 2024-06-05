@@ -23,16 +23,13 @@
         <form action="{{ route('barang.update',$barang->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class=" card-body">
-                <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder=""
-                        value="{{$barang->name}}">
+            <div class="card-body">
+                    <label for="nama">Barang</label>
+                    <input type="text" class="form-control" id="barang" name="barang" value="{{$barang->nama}}">
                 </div>
                 <div class="form-group">
-                    <label for="nama">Barang</label>
-                    <input type="text" class="form-control" id="barang" name="barang">
-                        value="{{$barang->barang}}">
+                    <label for="stock">Stock</label>
+                    <input type="number" class="form-control" id="stock" name="stock" value="{{$barang->stock}}">
                 </div>
                 <div class="form-group">
                     <label for="harga">Harga</label>

@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Livewire;
 use App\Models\Transaksi;
 use Livewire\Component;
 use App\Models\Pelanggan;
 use Illuminate\Support\Facades\Auth;
-
+	
 class Penjualan extends Component
 {
 
@@ -20,13 +19,13 @@ class Penjualan extends Component
     public function store()
     {
         $this->validate([
-            'pelanggans_id'=>'required'
+            'pelanggan_id'=>'required'
         ]);
 
         Transaksi::create([
             'invoice'=>$this->invoice(),
-            'pelanggans_id'=>$this->pelanggan_id,
-            'users_id'=>Auth::user()->id,
+            'pelanggan_id'=>$this->pelanggan_id,
+            'user_id'=>Auth::user()->id,
             'total'=>'0'
         ]);
         $this->pelanggan_id=NULL;
@@ -44,4 +43,3 @@ class Penjualan extends Component
         return 'INV-1';
     }
 }
-

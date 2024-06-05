@@ -1,4 +1,3 @@
-
 <div class="row">
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -25,7 +24,7 @@
                         <tr>
                             <th>Pelanggan</th>
                             <th>:</th>
-                            <td>{{ $data->pelanggans->nama}}</td>
+                            <td>{{ $data->pelanggan->nama}}</td>
                         </tr>
                         <tr>
                             <th>Tanggal</th>
@@ -38,10 +37,10 @@
                             <td>@money($total)</td>
                         </tr>
                     </table>
-                </div>	
+                </div>
 
             </div>
-        </div>	
+        </div>
 
         <div class="col-lg-6 ps-3">
             <div class="card">
@@ -58,7 +57,7 @@
                                 <select class="form-control" wire:model="barang_id" name="barang_id">
                                     <option hidden>--Pilih Barang--</option>
                                     @foreach($dataBarang as $dt )
-                                    <option value="{{ $dt->id }}">{{ $dt->name }}</option>
+                                    <option value="{{ $dt->id }}">{{ $dt->barang }}</option>
                                     @endforeach
                                 </select>
 
@@ -102,13 +101,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($dataTransaksiDetail as $dt)
+                            @foreach($dataDetiltransaksi as $dt)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $dt->barang->name }}</td>
-                                <td>@money($dt->price)</td>
+                                <td>{{ $dt->barang->barang }}</td>
+                                <td>@money($dt->harga)</td>
                                 <td>{{ $dt->qty}}</td>
-                                <td>@money($dt->price * $dt->qty)</td>
+                                <td>@money($dt->harga * $dt->qty)</td>
                                 <td><button class="btn btn-sm btn-danger" wire:click="delete({{ $dt->id }})"><i class=" fas fa-trash"></i></a></td>
                             </tr>
                             @endforeach
@@ -137,7 +136,7 @@
                                     :
                             </th>
                             <th>
-                            <input type="number" class="mt-2" wire:model="uang">
+                            <input type="number" class="mt-2" wire:model.live="uang">
                             </th>
                         </tr>
                         <tr>
@@ -153,8 +152,7 @@
                         </tr>
                     </table>
                    
-                    <button class="btn btn-lg btn-success"><i class="fas fa-print"></i>  Cetak</button>
-                 
+                    <button class="btn btn-lg btn-success" wire:click="receipt({{ $data->id }})"><i class="fas fa-print"></i>  Cetak</button>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('transaksis_id')->unsigned();
             $table->bigInteger('barangs_id')->unsigned();
             $table->integer('qty');
-            $table->double('price');
+            $table->double('harga');
             $table->timestamps();
         });
         Schema::table('detiltransaksis', function(Blueprint $table) {

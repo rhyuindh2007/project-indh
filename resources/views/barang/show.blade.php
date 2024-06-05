@@ -23,14 +23,15 @@
 
         <div class=" card-body">
             <table>
-                <tr>
-                    <th>Nama</th>
-                    <td>:</td>
-                    <td>{{ $data[0]->nama }}</td>
-                </tr>
                 <th>Barang</th>
                     <td>:</td>
                     <td>{{ $data[0]->barang }}</td>
+                </tr>
+                <tr>
+                    <th>Stok</th>
+                    <td>:</td>
+                   
+                    <td>{{ $data[0]->Stock}}</td>
                 </tr>
                 <tr>
                     <th>Harga</th>

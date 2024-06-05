@@ -21,7 +21,7 @@ class Transaksis extends Component
 
     public function render()
     {
-        $transaksi=Transaksi::select('*')->where('users_id','=',Auth::user()->id)->transaksiBy('id','desc')->first();
+        $transaksi=Transaksi::select('*')->where('user_id','=',Auth::user()->id)->orderBy('id','desc')->first();
 
         $this->total=$transaksi->total;
         $this->kembali=$this->uang-$this->total;
@@ -39,13 +39,13 @@ class Transaksis extends Component
         ]);
         $transaksi=Transaksi::select('*')->where('user_id','=',Auth::user()->id)->orderBy('id','desc')->first();
         $this->transaksi_id=$transaksi->id;
-        $layanan=Barang::where('id','=',$this->barang_id)->get();
-        $harga=$barang[0]->price;
+        $barang=Barang::where('id','=',$this->barang_id)->get();
+        $harga=$barang[0]->harga;
         Detiltransaksi::create([
             'transaksi_id'=>$this->transaksi_id,
             'barang_id'=>$this->barang_id,
             'qty'=>$this->qty,
-            'price'=>$harga
+            'harga'=>$harga
         ]);
         
         
@@ -68,7 +68,7 @@ class Transaksis extends Component
         $detiltransaksi=Detiltransaksi::select('*')->where('transaksi_id','=',$this->transaksi_id)->get();
         $total=0;
         foreach($detiltransaksi as $od){
-            $total+=$od->qty*$od->price;
+            $total+=$od->qty*$od->harga;
         }
         
         try{
@@ -88,7 +88,7 @@ class Transaksis extends Component
             $stocklama = Barang::select('stock')->where('id','=', $od->barang_id)->sum('stock');
             $stock = $stocklama - $od->qty;
             try {
-                Layanan::where('id','=', $od->barang_id)->update([
+                Barang::where('id','=', $od->barang_id)->update([
                     'stock' => $stock
                 ]);
             } catch (Exception $e) {

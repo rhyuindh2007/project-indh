@@ -29,9 +29,10 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama</th>
                         <th>Barang</th>
+                        <th>Stock</th>
                         <th>Harga</th>
+                        <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -40,9 +41,10 @@
                     @foreach($data as $dt)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $dt->nama }}</td>
                         <td>{{ $dt->barang }}</td>
+                        <td>{{ $dt->stock }}</td>
                         <td>{{ $dt->harga }}</td>
+                        <td>{{ $dt->description }}</td>
                         <td>
                             <div class="btn-group">
                                 <form action="{{ route('barang.destroy',$dt->id)}}" method="POST">

@@ -29,8 +29,8 @@ class BarangController extends Controller
     public function store(Request $request):RedirectResponse
     {
         $request->validate([
-            "nama"=>"required",
             "barang"=>"required",
+            "stock"=>"required",
             "harga"=>"nullable",
             "description"=>"required",
         ]);
@@ -48,8 +48,8 @@ class BarangController extends Controller
     public function update(Barang $barang, Request $request):RedirectResponse
     {
         $request->validate([
-            "nama"=>"required",
             "barang"=>"required",
+            "stock"=>"required",
             "harga"=>"nullable",
             "description"=>"required"
         ]);

@@ -43,7 +43,7 @@
                         <span class="dropdown-item dropdown-header">User Menu</span>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
-                            <i class="fas fa-user mr-2"></i>
+                            <i class="fas fa-user mr-2">Indah rahayu</i>
                             <span class="float-right text-muted text-sm"></span>
                         </a>
 
@@ -56,7 +56,6 @@
                         </form>
                     </div>
                 </li>
-
 
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -156,13 +155,13 @@
 
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
+                            <a href="{{ route('laporan.index')}}" class="nav-link {{ ($title==='Laporan')?'active':''}}">
+                                <i class="nav-icon fas fa-file-pdf"></i>
                                 <p>
-                                    Detiltransaksi
-                                    <i class="fas fa-angle-left right"></i>
+                                    Laporan
                                 </p>
                             </a>
+                        </li>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="pages/tables/simple.html" class="nav-link">

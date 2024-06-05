@@ -11,11 +11,16 @@ class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $fillable=['pelanggans_id','users_id','invoice','total'];
+    protected $fillable=['invoice','pelanggan_id','user_id','total'];
     
     public function detiltransaksi():HasMany
     {
         return $this->hasMany(Detiltransaksi::class);
+    }
+
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function pelanggan():BelongsTo

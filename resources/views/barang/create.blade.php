@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('judulh1','Admin - Product')
+@section('judulh1','Admin - Barang')
 
 @section('konten')
 <div class="col-md-6">
@@ -25,12 +25,12 @@
 
             <div class=" card-body">
                 <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="">
-                </div>
-                <div class="form-group">
                     <label for="nama">Barang</label>
                     <input type="text" class="form-control" id="barang" name="barang">
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number" class="form-control" id="stock" name="stock">
                 </div>
                 <div class="form-group">
                     <label for="harga">Harga</label>
